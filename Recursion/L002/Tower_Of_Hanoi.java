@@ -32,3 +32,31 @@
 // 1[12 -> 10]
 // 2[12 -> 11]
 // 1[10 -> 11]
+
+
+// ---------------------
+import java.io.*;
+import java.util.*;
+
+public class Tower_Of_Hanoi {
+
+    public static void main(String[] args){
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt(); // for number of disk
+        int src = scn.nextInt();
+        int dest = scn.nextInt();
+        int helper = scn.nextInt();
+
+        toh(n,src,dest,helper);
+
+    }
+
+    public static void toh(int n, int src, int dest, int helper){
+        if(n == 0) return;
+        toh(n-1, src, helper, dest);  //by paith src - src,dest - helper, helper - dest
+        System.out.println(n+"["+src+" -> "+dest+"]");
+        toh(n-1 ,helper, dest, src);  //by paith src - helper, dest - dest, helper - src;
+    }
+
+}
